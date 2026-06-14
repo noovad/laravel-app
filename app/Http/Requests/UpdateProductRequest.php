@@ -4,10 +4,9 @@ namespace App\Http\Requests;
 
 use App\Models\Product;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateProductRequest extends FormRequest
+class UpdateProductRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +21,7 @@ class UpdateProductRequest extends FormRequest
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */
-    public function rules(Product $product): array
+    public static function rules(Product $product): array
     {
         return [
             'name' => ['required', 'string', 'max:255'],
