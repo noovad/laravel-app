@@ -1,6 +1,6 @@
 <div>
     <div class="overflow-auto">
-        <table id="product-table" class="border table-auto">
+        <table id="product-table" class="w-full overflow-auto">
             <thead>
                 <tr>
                     <th class="text-center">No</th>
@@ -23,13 +23,16 @@
                     <th></th>
                     <th><input class="search" placeholder="Search" wire:model.live.debounce.150ms="filters.name" /></th>
                     <th><input class="search" placeholder="Search" wire:model.live.debounce.150ms="filters.slug" /></th>
-                    <th><input type="number" class="search" placeholder="Search"
+                    <th>
+                        <input type="number" class="search" placeholder="Search"
                             wire:model.live.debounce.150ms="filters.price" />
                     </th>
-                    <th><input type="number" class="search" placeholder="Search"
+                    <th>
+                        <input type="number" class="search" placeholder="Search"
                             wire:model.live.debounce.150ms="filters.stock" />
                     </th>
-                    <th><input class="search" placeholder="Search" wire:model.live.debounce.150ms="filters.status" />
+                    <th>
+                        <input class="search" placeholder="Search" wire:model.live.debounce.150ms="filters.status" />
                     </th>
                     <th></th>
                 </tr>
@@ -57,12 +60,20 @@
                             @endif
                         </td>
                         <td class="flex gap-2">
-                            <button wire:click="edit({{ $product->id }})"
-                                class="px-2 py-1 border rounded">Edit</button>
                             <button wire:click="destroy({{ $product->id }})" wire:confirm="Delete this product?"
                                 class="px-2 py-1 border rounded">
-                                Delete
+                                Detail
                             </button>
+                            @can('update', $product)
+                                <button wire:click="edit({{ $product->id }})"
+                                    class="px-2 py-1 border rounded">Edit</button>
+                            @endcan
+                            @can('delete', $product)
+                                <button wire:click="destroy({{ $product->id }})" wire:confirm="Delete this product?"
+                                    class="px-2 py-1 border rounded">
+                                    Delete
+                                </button>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

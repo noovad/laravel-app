@@ -83,7 +83,7 @@ class Table extends Component
         }
 
         return view('livewire.product.table', [
-            'products' => $query->paginate(20),
+            'products' => $query->paginate(15),
         ]);
     }
 }

@@ -54,7 +54,7 @@ class Form extends Component
     }
 
     #[On('product-edit')]
-    public function edit(int $productId): void
+    public function loadProduct(int $productId): void
     {
         $product = Product::findOrFail($productId);
 

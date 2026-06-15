@@ -47,7 +47,9 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentColor);
     }
-
+    button {
+        @apply cursor-pointer;
+    }
     th {
         @apply p-2 text-left;
     }
@@ -55,13 +57,19 @@
         @apply border-b;
     }
     td {
-        @apply p-2 max-w-40 truncate;
+        @apply p-2;
     }
     input {
         @apply border rounded p-2;
     }
     input.search {
         @apply w-full;
+    }
+}
+
+@layer utilities {
+    .modal {
+        @apply fixed inset-0 z-50 flex items-center justify-center bg-black/25;
     }
 }
 
