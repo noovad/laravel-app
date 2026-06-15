@@ -1,8 +1,8 @@
 <div x-data="{ open: false }" x-on:product-edit.window="open = true" x-on:product-save.window="open = false"
     class="text-end space-y-2">
     <button @click="open = !open" class="px-4 py-2 border border-black rounded font-medium">Create</button>
-    <div x-show="open" class="modal">
-        <form wire:submit="save" @click.outside="open = false"
+    <div x-show="open" x-transition.opacity class="modal">
+        <form wire:submit="save" @click.outside="open = false; $wire.closeForm();" x-transition.scale.duration.200ms
             class="space-y-4 border rounded p-4 mb-8 bg-white dark:bg-zinc-80 text-start">
             <h4 class="text-xl font-medium text-center">
                 {{ $editing ? 'Update' : 'Create' }}
@@ -55,6 +55,8 @@
                 </label>
             </div>
             <div class="text-end">
+                <button type="button" @click='open = false; $wire.closeForm();'
+                    class="px-4 py-2 border rounded">Close</button>
                 <button type="submit" class="px-4 py-2 bg-black text-white rounded">
                     <span wire:loading.remove>Save</span>
                     <span wire:loading>Saving...</span>

@@ -43,10 +43,20 @@ class Form extends Component
             );
 
             $service->update($this->editing, $validated, $this->image);
+            $this->dispatch(
+                'toast',
+                message: 'Product update successfully',
+                type: 'success'
+            );
         } else {
             $validated = $this->validate(StoreProductRequest::rules());
 
             $service->create($validated, $this->image);
+            $this->dispatch(
+                'toast',
+                message: 'Product created successfully',
+                type: 'success'
+            );
         }
 
         $this->dispatch('product-save');
@@ -70,6 +80,12 @@ class Form extends Component
         ]);
         $this->currentImage = $product->image;
         $this->image = null;
+    }
+
+    public function closeForm(): void
+    {
+        $this->resetForm();
+        $this->resetValidation();
     }
 
     protected function resetForm(): void

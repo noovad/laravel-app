@@ -51,6 +51,12 @@ class Table extends Component
     {
         $this->authorize('delete', $product);
         $service->delete($product);
+
+        $this->dispatch(
+            'toast',
+            message: 'Product delete successfully',
+            type: 'success'
+        );
     }
 
     #[On('product-save')]

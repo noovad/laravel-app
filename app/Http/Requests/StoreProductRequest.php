@@ -35,7 +35,11 @@ class StoreProductRequest
             'price' => ['required', 'integer', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'is_active' => ['required', 'boolean'],
-            'image' => ['nullable', 'string'],
+            'image' => [
+                'nullable',
+                'image',
+                'max:2048',
+            ]
         ];
     }
 }
