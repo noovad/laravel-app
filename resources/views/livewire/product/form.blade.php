@@ -11,6 +11,12 @@
         <div>
             <label>Slug</label>
             <input type="text" wire:model="slug" class="w-full border rounded p-2" />
+            @error('slug')
+                <div class="text-red-500 text-sm">
+                    {{ $message }}
+                </div>
+            @enderror
+
         </div>
         <div>
             <label>Description</label>
@@ -19,11 +25,11 @@
         <div class="grid grid-cols-2 gap-4">
             <div>
                 <label>Price</label>
-                <input type="number" wire:model="price" class="w-full border rounded p-2" />
+                <input type="number" min="0" wire:model="price" class="w-full border rounded p-2" />
             </div>
             <div>
                 <label>Stock</label>
-                <input type="number" wire:model="stock" class="w-full border rounded p-2" />
+                <input type="number" min="0" wire:model="stock" class="w-full border rounded p-2" />
             </div>
         </div>
         <div>

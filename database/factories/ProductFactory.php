@@ -24,6 +24,7 @@ class ProductFactory extends Factory
         );
 
         return [
+            'user_id' => 1,
             'name' => $name,
             'slug' => fake()->slug(),
             'description' => fake()->paragraph(),
