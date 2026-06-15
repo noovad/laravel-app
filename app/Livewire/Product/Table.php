@@ -13,7 +13,9 @@ class Table extends Component
     use WithPagination;
 
     public array $filters = [];
+
     public ?string $sortField = null;
+
     public ?string $sortDirection = null;
 
     public function updatedFilters(): void
@@ -82,6 +84,7 @@ class Table extends Component
 
             if (in_array($field, ['price', 'stock'])) {
                 $query->where($field, $value);
+
                 continue;
             }
 

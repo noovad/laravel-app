@@ -12,10 +12,10 @@ class ProductService
     public function create(array $data, ?UploadedFile $image = null): Product
     {
         if ($image) {
-            $data["image"] = $image->store("products", "public");
+            $data['image'] = $image->store('products', 'public');
         }
 
-        $data["user_id"] = Auth::id();
+        $data['user_id'] = Auth::id();
 
         return Product::create($data);
     }
@@ -27,10 +27,10 @@ class ProductService
     ): Product {
         if ($image) {
             if ($product->image) {
-                Storage::disk("public")->delete($product->image);
+                Storage::disk('public')->delete($product->image);
             }
 
-            $data["image"] = $image->store("products", "public");
+            $data['image'] = $image->store('products', 'public');
         }
 
         $product->update($data);
@@ -41,7 +41,7 @@ class ProductService
     public function delete(Product $product): bool
     {
         if ($product->image) {
-            Storage::disk("public")->delete($product->image);
+            Storage::disk('public')->delete($product->image);
         }
 
         return $product->delete();

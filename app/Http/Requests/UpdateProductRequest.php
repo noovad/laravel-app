@@ -41,7 +41,7 @@ class UpdateProductRequest
                 'nullable',
                 'image',
                 'max:2048',
-            ]
+            ],
         ];
     }
 }
