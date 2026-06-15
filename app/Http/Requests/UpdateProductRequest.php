@@ -29,17 +29,19 @@ class UpdateProductRequest
                 'required',
                 'string',
                 'max:255',
-
                 Rule::unique('products')
                     ->ignore($product->id),
-
                 'regex:/^[a-z0-9-]+$/',
             ],
             'description' => ['required', 'string'],
             'price' => ['required', 'integer', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'is_active' => ['required', 'boolean'],
-            'image' => ['nullable', 'string'],
+            'image' => [
+                'nullable',
+                'image',
+                'max:2048',
+            ]
         ];
     }
 }
